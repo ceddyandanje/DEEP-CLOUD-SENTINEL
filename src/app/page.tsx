@@ -1,7 +1,8 @@
 import { Button } from '@/components/ui/button';
 import CoverageChart from './(dashboard-components)/CoverageChart';
 import OptimizationProgress from './(dashboard-components)/OptimizationProgress';
-import { DownloadCloud } from 'lucide-react';
+import { DownloadCloud, Activity, ShieldAlert, DollarSign } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 
 export default function DashboardPage() {
   return (
@@ -25,13 +26,42 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {/* Placeholder for additional dashboard widgets */}
-        {[1,2,3].map((i) => (
-            <div key={i} className="rounded-lg border bg-card text-card-foreground shadow-sm p-6 min-h-[150px] flex flex-col justify-center items-center">
-                <h3 className="text-lg font-semibold mb-2">Widget {i}</h3>
-                <p className="text-sm text-muted-foreground">Future content placeholder.</p>
-            </div>
-        ))}
+        <Card className="shadow-sm">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Active Services</CardTitle>
+            <Activity className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">12</div>
+            <p className="text-xs text-muted-foreground">
+              Currently running cloud services
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="shadow-sm">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Security Alerts</CardTitle>
+            <ShieldAlert className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">3 Critical</div>
+            <p className="text-xs text-muted-foreground">
+              Requiring immediate attention
+            </p>
+          </CardContent>
+        </Card>
+        <Card className="shadow-sm">
+          <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+            <CardTitle className="text-sm font-medium">Monthly Cost</CardTitle>
+            <DollarSign className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
+          <CardContent>
+            <div className="text-2xl font-bold">$2,345.67</div>
+            <p className="text-xs text-muted-foreground">
+              Projected for this billing cycle
+            </p>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );
